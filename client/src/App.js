@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import poses from "./poses.json";
+import FilterBy from './components/header'
 
 function App() {
   // array of card suits used as a lookup table.
@@ -70,6 +71,7 @@ function App() {
   });
 
   return <div className="App">
+    <FilterBy />
     {newData}
   </div>;
 }
