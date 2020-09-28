@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+#lotus{
+  height: 100px;
+}
+
+.poses{
+  width: 150px;  
+  margin: 0px auto;
+}
+
+.card{
+  width: 75%;
+  margin: 0px auto;
+  padding-bottom: 20px;
+}
