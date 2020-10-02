@@ -23,8 +23,13 @@ const allPoses = [
 ];
 
 function App() {
-  const [selectedTypes, setSelectedTypes] = useState(["Standing", "Balanced", "Seated", "Twists"]);
-  
+  const [selectedTypes, setSelectedTypes] = useState([
+    "Standing",
+    "Balanced",
+    "Seated",
+    "Twists",
+  ]);
+
   // [standing, balanced, seated, twists]
 
   // filteredPoses -> all poses if nothing is checked
@@ -37,7 +42,9 @@ function App() {
     } else {
       // selectedTypes -> ["standing", "balanced"]
       // if we uncheck a box, we want to filter out that pose
-      setSelectedTypes(selectedTypes.filter((pose) => pose !== checkedPose.type));
+      setSelectedTypes(
+        selectedTypes.filter((pose) => pose !== checkedPose.type)
+      );
     }
   };
 
@@ -54,7 +61,7 @@ function App() {
     return false;
   });
 
-  const alphaPoses = filteredPoses.sort(function (a,b){
+  const alphaPoses = filteredPoses.sort(function (a, b) {
     if (a.english_name < b.english_name) {
       return -1;
     }
@@ -62,33 +69,37 @@ function App() {
       return 1;
     }
     return 0;
-  })
+  });
 
   const newData = alphaPoses.map((pose) => {
     return (
-      <div className="card" key={pose.id}>
-        <div className="poses">
-          <img src={pose.img_url} alt={pose.english_name + " pose"} />
-        </div>
+      <div className="tile is-ancestor">
+        <div className="tile is-parent" key={pose.id}>
+          <article className="tile is-child box">
+            <div className="poses">
+              <img src={pose.img_url} alt={pose.english_name + " pose"} />
+            </div>
 
-        <div>
-          <div>
-            <p className="title is-4">{pose.english_name}</p>
-          </div>
+            <div>
+              <div>
+                <p className="title is-4">{pose.english_name}</p>
+              </div>
 
-          <div>Sanskrit name: {pose.sanskrit_name}</div>
+              <div>Sanskrit name: {pose.sanskrit_name}</div>
 
-          <div>Pose type(s): {
-            pose.types.map((type, index) => {
-              // if (index !== pose.types.length - 1) {
-              //   return type + ", ";
-              // } else {
-              //   return type;
-              // }
-              return index !== pose.types.length - 1 ? type + ", " : type;
-            })
-          }</div>
-
+              <div>
+                Pose type(s):{" "}
+                {pose.types.map((type, index) => {
+                  // if (index !== pose.types.length - 1) {
+                  //   return type + ", ";
+                  // } else {
+                  //   return type;
+                  // }
+                  return index !== pose.types.length - 1 ? type + ", " : type;
+                })}
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     );
