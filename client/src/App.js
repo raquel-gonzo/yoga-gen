@@ -54,7 +54,17 @@ function App() {
     return false;
   });
 
-  const newData = filteredPoses.map((pose) => {
+  const alphaPoses = filteredPoses.sort(function (a,b){
+    if (a.english_name < b.english_name) {
+      return -1;
+    }
+    if (a.english_name > b.english_name) {
+      return 1;
+    }
+    return 0;
+  })
+
+  const newData = alphaPoses.map((pose) => {
     return (
       <div className="card" key={pose.id}>
         <div className="poses">
@@ -66,7 +76,19 @@ function App() {
             <p className="title is-4">{pose.english_name}</p>
           </div>
 
-          <div>Sanskrit name:{pose.sanskrit_name}</div>
+          <div>Sanskrit name: {pose.sanskrit_name}</div>
+
+          <div>Pose type(s): {
+            pose.types.map((type, index) => {
+              // if (index !== pose.types.length - 1) {
+              //   return type + ", ";
+              // } else {
+              //   return type;
+              // }
+              return index !== pose.types.length - 1 ? type + ", " : type;
+            })
+          }</div>
+
         </div>
       </div>
     );
