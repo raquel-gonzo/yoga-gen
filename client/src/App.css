@@ -1,18 +1,55 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: x-large;
+  background-color: rgb(178, 226, 248);
 }
 
 #lotus{
   height: 100px;
+  margin-top: 20px;
 }
 
 .poses{
   width: 150px;  
   margin: 0px auto;
 }
-/* 
+
+#filters{
+  display: inline-flex;
+}
+
+h3{
+  margin: 0;
+}
+
 .card{
-  width: 75%;
+  width: 350px;
   margin: 0px auto;
-  padding-bottom: 20px;
-} */
+}
+
+.checkbox{
+  margin-right: 20px ;
+  margin-left: 2px;
+}
+
+/* trying to make it mobile responsive - we can remove this */
+#allPosesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* this will be applied under 600px */
+@media screen and (max-width: 600px) {
+  #allPosesContainer div.card {
+    width: 250px;
+  }
+}
+
+#message{
+  margin: 0px auto;
+}

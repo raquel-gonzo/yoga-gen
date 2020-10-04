@@ -6,25 +6,26 @@ const FilterBy = (props) => {
       <p key={index}>
         <label htmlFor={pose.type}>{pose.type}</label>
         <input
+          className="checkbox"
           type="checkbox"
           id={pose.type}
           onChange={(e) => props.handleCheck(pose, e.target.checked)}
           checked={pose.isChecked}
         />
       </p>
-    )
-  })
+    );
+  });
 
   return (
     <div>
       <div>
+        <img id="lotus" src="/images/lotus.svg" alt="lotus clipart" />
         <h2>Yoga Poses Library</h2>
-        <img id="lotus" src="/images/lotus.svg" alt='lotus clipart' />
       </div>
 
-      <p>Filter Poses: </p>
+      <h3>Filter Poses: </h3>
 
-      {allPoses}
+      <div id="filters">{allPoses}</div>
     </div>
   );
 };

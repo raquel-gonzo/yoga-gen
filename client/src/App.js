@@ -71,35 +71,39 @@ function App() {
     return 0;
   });
 
+  const message = () => {
+    if (newData.length === 0){
+      return(<div id='message'>select a pose category.</div>)
+    }
+  }
+
   const newData = alphaPoses.map((pose) => {
     return (
-      <div className="tile is-ancestor">
-        <div className="tile is-parent" key={pose.id}>
-          <article className="tile is-child box">
-            <div className="poses">
-              <img src={pose.img_url} alt={pose.english_name + " pose"} />
-            </div>
+      <div className="card bg-light mb-3 border-dark">
+        <div className="card-body" key={pose.id}>
+          <div className="poses">
+            <img src={pose.img_url} alt={pose.english_name + " pose"} />
+          </div>
 
+          <div>
             <div>
-              <div>
-                <p className="title is-4">{pose.english_name}</p>
-              </div>
-
-              <div>Sanskrit name: {pose.sanskrit_name}</div>
-
-              <div>
-                Pose type(s):{" "}
-                {pose.types.map((type, index) => {
-                  // if (index !== pose.types.length - 1) {
-                  //   return type + ", ";
-                  // } else {
-                  //   return type;
-                  // }
-                  return index !== pose.types.length - 1 ? type + ", " : type;
-                })}
-              </div>
+              <p className="card-title">{pose.english_name}</p>
             </div>
-          </article>
+
+            <div className="card-text">Sanskrit name: {pose.sanskrit_name}</div>
+
+            <div className="card-text">
+              Pose type(s):{" "}
+              {pose.types.map((type, index) => {
+                // if (index !== pose.types.length - 1) {
+                //   return type + ", ";
+                // } else {
+                //   return type;
+                // }
+                return index !== pose.types.length - 1 ? type + ", " : type;
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -108,7 +112,10 @@ function App() {
   return (
     <div className="App">
       <FilterBy handleCheck={handleCheck} allPoses={allPoses} />
-      {newData}
+      <div id="allPosesContainer">
+        {newData}
+        {message()}
+      </div>
     </div>
   );
 }
