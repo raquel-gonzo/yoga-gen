@@ -5,6 +5,8 @@ Using a yoga pose API created by [@rebeccaestes](https://github.com/rebeccaestes
 
 ### Backlog 
 - Move the library of poses to a Baas platform.
+<!---
 - Have a random tile picker for generating random sequences.
 - A button for downloading a random sequence. 
 - Use a different API, such as one that [@Stuwert](https://github.com/Stuwert/yoga-builder) created. 
+-->
